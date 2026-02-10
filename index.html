@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHESSKO | Premium Chess Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07090d;
+      --panel:#0f1320;
+      --glass:rgba(255,255,255,.06);
+      --gold:#d4af37;
+      --gold-soft:#f3d98b;
+      --text:#f4f4f6;
+      --muted:#9aa0aa;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:Inter,system-ui,sans-serif;
+      background:
+        radial-gradient(900px 500px at 10% -10%, #1a1f2f, transparent),
+        radial-gradient(800px 400px at 90% 10%, #14192a, transparent),
+        var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+
+    /* NAV */
+    nav{
+      position:sticky;top:0;z-index:100;
+      backdrop-filter:blur(14px);
+      background:linear-gradient(to bottom, rgba(7,9,13,.85), rgba(7,9,13,.55));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      max-width:1200px;margin:auto;padding:18px 28px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .logo{
+      font-family:Playfair Display;
+      font-size:26px;letter-spacing:2px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+      -webkit-background-clip:text;color:transparent;
+    }
+    .links a{margin-left:28px;font-size:14px;color:var(--muted)}
+    .links a:hover{color:var(--text)}
+
+    /* SECTIONS */
+    section{padding:140px 28px;display:none}
+section.active{display:block}
+    .container{max-width:1200px;margin:auto}
+
+    /* HERO */
+    .hero{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;
+    }
+    .badge{
+      display:inline-block;padding:7px 16px;border-radius:999px;
+      background:var(--glass);border:1px solid rgba(255,255,255,.12);
+      font-size:12px;color:var(--muted)
+    }
+    h1{
+      font-family:Playfair Display;
+      font-size:72px;line-height:1.05;margin:26px 0
+    }
+    h1 span{color:var(--gold)}
+    .hero p{font-size:18px;color:var(--muted);max-width:520px}
+    .cta{
+      display:inline-block;margin-top:40px;padding:18px 44px;
+      border-radius:999px;font-weight:600;
+      background:linear-gradient(135deg,var(--gold-soft),var(--gold));
+      color:#000
+    }
+    .hero-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:28px;padding:44px;
+      box-shadow:0 60px 160px rgba(0,0,0,.65)
+    }
+
+    /* COURSES */
+    h2{
+      font-family:Playfair Display;
+      font-size:52px;margin-bottom:24px
+    }
+    .courses{display:grid;grid-template-columns:repeat(4,1fr);gap:34px}
+    .course{
+      background:linear-gradient(180deg,#121735,#0b0f22);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:26px;padding:34px;
+      transition:.4s
+    }
+    .course:hover{transform:translateY(-6px);box-shadow:0 40px 120px rgba(0,0,0,.6)}
+    .course h3{font-size:24px;margin-bottom:10px}
+    .course p{color:var(--muted)}
+    .actions{margin-top:22px}
+    .btn-outline{
+      display:inline-block;padding:12px 26px;border-radius:999px;
+      border:1px solid var(--gold);color:var(--gold)
+    }
+
+    /* COACHES */
+    .coach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .coach{
+      background:var(--panel);border-radius:22px;padding:28px;
+      border:1px solid rgba(255,255,255,.08)
+    }
+
+    /* GALLERY */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .photo{
+      height:180px;border-radius:18px;
+      background:linear-gradient(135deg,#1c223a,#0c1022);
+      display:flex;align-items:center;justify-content:center;
+      color:var(--muted);font-size:14px
+    }
+
+    /* CONTACT */
+    .contact{max-width:700px;margin:auto;text-align:center}
+    .contact input,.contact textarea{
+      width:100%;margin-top:16px;padding:16px;border-radius:14px;
+      background:#0c1022;border:1px solid rgba(255,255,255,.10);color:var(--text)
+    }
+
+    footer{
+      padding:60px 28px;text-align:center;color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.08)
+    }
+
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      h1{font-size:52px}
+      .courses,.coach-grid,.gallery{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav">
+    <div class="logo">CHESSKO</div>
+    <div class="links">
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('courses')">Training Programs</a>
+      <a href="#" onclick="showPage('coaches')">Coaches</a>
+      <a href="#" onclick="showPage('gallery')">Activities</a>
+      <a href="#" onclick="showPage('contact')">Admission</a>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="active">
+  <div class="container hero">
+    <div>
+      <span class="badge">ESTABLISHED CHESS TRAINING INSTITUTE</span>
+      <h1>Structured Training.<br><span>Serious Improvement.</span></h1>
+      <p>CHESSKO is a professionally managed chess academy focused on structured learning, disciplined thinking, and long‑term competitive improvement.</p>
+      <a class="cta" href="#" onclick="showPage('courses')">Explore Programs</a>
+    </div>
+    <div class="hero-card">
+      <h3>Our Philosophy</h3>
+      <p style="color:var(--muted)">We believe chess improvement requires clarity, consistency, and correct guidance. Our programs emphasize fundamentals, analytical discipline, and sustainable progress.</p>
+    </div>
+  </div>
+</section>
+
+<section id="courses">
+  <div class="container">
+    <h2>Training Programs</h2>
+    <div class="courses">
+      <div class="course">
+        <h3>Beginner</h3>
+        <p><strong>Eligible:</strong> New & unrated players.</p>
+        <p>Systematic introduction to chess rules, basic checkmating patterns, tactical awareness, and the development of correct playing habits.</p>
+        <div class="actions">
+          <a class="cta" href="#" onclick="showPage('contact')">Contact</a>
+          <a class="btn-outline" href="#" onclick="showCoaches('beginner')">Coaches</a>
+        </div>
+      </div>
+      <div class="course">
+        <h3>Intermediate</h3>
+        <p><strong>Eligible:</strong> FIDE 1400 – 1600.</p>
+        <p>Development of calculation ability, positional understanding, structured decision‑making, and essential endgame techniques.</p>
+        <div class="actions">
+          <a class="cta" href="#" onclick="showPage('contact')">Contact</a>
+          <a class="btn-outline" href="#" onclick="showCoaches('intermediate')">Coaches</a>
+        </div>
+      </div>
+      <div class="course">
+        <h3>Advanced</h3>
+        <p><strong>Eligible:</strong> FIDE 1600 – 1800.</p>
+        <p>Advanced opening preparation, deep analytical training, tournament strategy, and competitive psychological readiness.</p>
+        <div class="actions">
+          <a class="cta" href="#" onclick="showPage('contact')">Contact</a>
+          <a class="btn-outline" href="#" onclick="showCoaches('advanced')">Coaches</a>
+        </div>
+      </div>
+      <div class="course">
+        <h3>Expert</h3>
+        <p><strong>Eligible:</strong> FIDE 1800+.</p>
+        <p>High‑level competitive preparation, opponent‑specific analysis, advanced endgame mastery, and performance optimization.</p>
+        <div class="actions">
+          <a class="cta" href="#" onclick="showPage('contact')">Contact</a>
+          <a class="btn-outline" href="#" onclick="showCoaches('expert')">Coaches</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="coaches">
+  <div class="container">
+    <h2>Coaching Faculty</h2>
+    <div class="coach-grid">
+      <div class="coach" data-level="beginner">
+        <img src="https://via.placeholder.com/300x220" style="width:100%;border-radius:14px;margin-bottom:14px">
+        <h3>Arjun N.</h3>
+        <p style="color:var(--muted)">Beginner Coach</p>
+        <p>Specialization: Fundamentals, tactical awareness, and learning discipline</p>
+      </div>
+      <div class="coach" data-level="intermediate">
+        <img src="https://via.placeholder.com/300x220" style="width:100%;border-radius:14px;margin-bottom:14px">
+        <h3>Rahul K.</h3>
+        <p style="color:var(--muted)">Intermediate Coach</p>
+        <p>Specialization: Calculation training and positional understanding</p>
+      </div>
+      <div class="coach" data-level="advanced">
+        <img src="https://via.placeholder.com/300x220" style="width:100%;border-radius:14px;margin-bottom:14px">
+        <h3>Sameer S.</h3>
+        <p style="color:var(--muted)">Advanced Coach</p>
+        <p>Specialization: Opening preparation and tournament performance</p>
+      </div>
+      <div class="coach" data-level="expert">
+        <img src="https://via.placeholder.com/300x220" style="width:100%;border-radius:14px;margin-bottom:14px">
+        <h3>Vikram S.</h3>
+        <p style="color:var(--muted)">Expert Coach</p>
+        <p>Specialization: High-level competitive preparation, opponent-specific analysis, and endgame mastery</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <h2>Academy Activities</h2>
+    <div class="gallery">
+      <div class="photo">Class Photo</div>
+      <div class="photo">Training Session</div>
+      <div class="photo">Practice</div>
+      <div class="photo">Tournament</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container contact">
+    <h2>Admission & Enrollment Inquiry</h2>
+    <p style="color:var(--muted);margin-bottom:20px">
+      📞 <strong>Phone:</strong> +91 9XXXXXXXXX<br>
+      ✉️ <strong>Email:</strong> Chesskidd2014@gmail.com
+    </p>
+    <input placeholder="Student Full Name" />
+    <input placeholder="Age" />
+    <input placeholder="Phone Number" />
+    <input placeholder="Email Address" />
+    <input placeholder="FIDE ID (if any)" />
+    <input placeholder="Current Rating (Online / OTB)" />
+    <textarea rows="4" placeholder="Chess background, tournaments played, goals"></textarea>
+    <br><br>
+    <a class="cta" href="mailto:Chesskidd2014@gmail.com?subject=CHESSKO%20Enrollment%20Inquiry">Send Inquiry</a>
+    <p style="margin-top:14px;color:var(--muted);font-size:13px">Submitting this form will open your email client to send the inquiry directly to the CHESSKO admissions team.</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 CHESSKO Chess Academy — Structured Training for Competitive Excellence
+</footer>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.coach').forEach(c => c.style.display = 'block');
+  window.scrollTo(0,0);
+}
+
+function showCoaches(level){
+  showPage('coaches');
+  document.querySelectorAll('.coach').forEach(c => {
+    c.style.display = (c.dataset.level === level) ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>
